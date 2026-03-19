@@ -47,8 +47,12 @@ def main():
     print("\n" + "="*70)
     print("[+] EXISTING USERS :")
     if existing_users:
-        for u in existing_users:
-            print(" -", u)
+        output_filename = f"existing_users_{tenantname}.txt"
+        with open(output_filename, "w", encoding="utf-8") as output:
+            for u in existing_users:
+                output.write(u + "\n")
+                print(" -", u)
+        print(f"[i] Output file written to {output_filename}") 
     else:
         print("[-] No user was found.")
     print("="*70)
